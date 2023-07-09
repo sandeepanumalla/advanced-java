@@ -1,0 +1,9 @@
+
+
+
+.snippet-container {
+    display: inline-block;
+    width: auto;
+    border: black solid 1px;
+    margin: 0 auto 0 auto;
+}
