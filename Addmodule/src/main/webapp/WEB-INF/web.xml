@@ -9,6 +9,17 @@
             <taglib-location>/WEB-INF/c.tld</taglib-location>
         </taglib>
     </jsp-config>
+
+    <servlet>
+        <servlet-name>A</servlet-name>
+        <servlet-class>com.example.addmodule.A</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>A</servlet-name>
+        <url-pattern>/A</url-pattern>
+    </servlet-mapping>
+    
     <error-page>
         <error-code>404</error-code>
         <location>/error_404.jsp</location>
