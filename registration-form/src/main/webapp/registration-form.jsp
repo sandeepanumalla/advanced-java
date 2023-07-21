@@ -13,8 +13,10 @@
 </head>
 <body>
 <%--<h2>hello</h2>--%>
-    <div class="container">
-        <div class="card">
+    <div class="container-md">
+        <div class="row">
+            <div class="col m6 offset-m3">
+                <div class="card mx-auto" style="width: 50%">
             <div class="card-body">
                 <h2 class="text-center">Employee Registration Form</h2>
                 <form method="post" action="${pageContext.request.contextPath}/employee">
@@ -51,8 +53,12 @@
 <%--                        <input type="checkbox" class="form-check-input" id="exampleCheck1">--%>
 <%--                        <label class="form-check-label" for="exampleCheck1">Check me out</label>--%>
 <%--                    </div>--%>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
+            </div>
+            </div>
             </div>
         </div>
     </div>
