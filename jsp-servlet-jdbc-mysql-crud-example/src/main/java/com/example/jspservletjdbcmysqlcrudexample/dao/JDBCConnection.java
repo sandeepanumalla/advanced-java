@@ -11,14 +11,14 @@ public class JDBCConnection {
         Connection connection;
         connection = null;
         try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/employee";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/demo";
             String username = "root";
             String password = "your_password";
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("mysql connection successful");
 
-        } catch (  SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return connection;

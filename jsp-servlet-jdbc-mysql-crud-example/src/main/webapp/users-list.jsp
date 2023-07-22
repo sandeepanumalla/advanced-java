@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Users List</title>
@@ -18,24 +19,50 @@
         </div>
     </nav>
     <div class="container">
-        <div class="card sm-5" >
+        <div class="d-flex justify-content-center">
+            <h1>List of Users</h1>
+<%--            testing jstl below--%>
+<%--            <c:set var="i" value="2"></c:set>--%>
+<%--            <h2><c:out value="${i}"></c:out></h2>--%>
+        </div>
+        <hr>
+        <div class="d-flex justify-items-center margin-bottom:1rem ">
+            <a href="<%=request.getContextPath()%>/new" class="btn btn-success">
+                Add New User
+<%--                <%request.getContextPath();%>--%>
+            </a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${listUser}" var="user">
+                    <tr>
+                        <th scope="row"><c:out value="${user.id}"></c:out></th>
+                        <td><c:out value="${user.name}"></c:out></td>
+                        <td><c:out value="${user.email}"></c:out></td>
+                        <td><c:out value="${user.country}"></c:out></td>
+<%--                        <td>--%>
+<%--                            <a href="edit?id=<c:out value='${user.id}'>Edit</c:out>"></a>--%>
+<%--                            &nbsp; &nbsp;--%>
+<%--                            <a href="delete?id=<c:out value='${user.id}'>Delete</c:out>"></a>--%>
+<%--                        </td>--%>
+                        <td><a href="edit?id=<c:out value='${user.id}'/>">Edit</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp; <a
+                                    href="delete?id=<c:out value='${user.id}' />">Delete</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
 
-            <div class="card-body md-2">
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class=" form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class=" btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 </body>

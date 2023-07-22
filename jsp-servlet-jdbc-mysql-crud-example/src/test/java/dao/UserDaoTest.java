@@ -26,7 +26,7 @@ public class UserDaoTest {
     public void getAllUsersTest() throws SQLException {
         List<User> listOfUsers = userDao.getAllUsers();
         System.out.println(listOfUsers);
-        Assertions.assertEquals(listOfUsers.size(), 0);
+        Assertions.assertEquals(listOfUsers.size(), 1);
     }
 
     @Test
@@ -48,6 +48,21 @@ public class UserDaoTest {
 
     @Test
     public void deleteUserTest() {
+        try {
+            String userId = "4";
+            int initialSize = userDao.getAllUsers().size();
+            userDao.deleteUser(userId);
+//            Assertions.assertEquals(userDao.getAllUsers().size(), initialSize - 1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    @Test
+    public void findByIdTest() {
+        String userId = "1";
+        User user = userDao.findById(userId);
+        System.out.println(user);
+        Assertions.assertEquals(user.getId(), Long.parseLong(userId));
     }
 }

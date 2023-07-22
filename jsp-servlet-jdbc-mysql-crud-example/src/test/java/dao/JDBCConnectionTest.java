@@ -32,4 +32,5 @@ public class JDBCConnectionTest {
 //        Assertions.assertEquals("mysql connection successful", outputStreamCaptor
 //                .toString().trim());
     }
+
 }

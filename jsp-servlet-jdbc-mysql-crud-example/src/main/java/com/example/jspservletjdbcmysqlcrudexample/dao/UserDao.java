@@ -1,6 +1,7 @@
 package com.example.jspservletjdbcmysqlcrudexample.dao;
 
 import com.example.jspservletjdbcmysqlcrudexample.model.User;
+import jdk.jshell.spi.SPIResolutionException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,8 +43,6 @@ public class UserDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            connection.close();
         }
     }
 
@@ -83,5 +82,27 @@ public class UserDao {
             throw new RuntimeException(e);
         }
         return users;
+    }
+
+    public User findById(String id) {
+        User user = null;
+        try {
+            String query = "SELECT * from demo.users where id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, id);
+            System.out.println(preparedStatement);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = User.builder()
+                        .id(resultSet.getInt("id"))
+                        .name(resultSet.getString("name"))
+                        .email(resultSet.getString("email"))
+                        .country(resultSet.getString("country"))
+                        .build();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
     }
 }
