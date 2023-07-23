@@ -19,8 +19,9 @@
     </div>
 </nav>
 <div class="container">
-    <div class="card mx-auto col-md-7" >
-        <div class="card-body  ">
+    <div class="row">
+        <div class="card mx-auto col-md-7 col-sm-10" >
+        <div class="card-body">
             <c:if test="${user != null}">
                 <form action="<%=request.getContextPath()%>/update" method="post">
             </c:if>
@@ -60,6 +61,7 @@
                 </div>
             </form>
         </div>
+    </div>
     </div>
 </div>
 </body>
